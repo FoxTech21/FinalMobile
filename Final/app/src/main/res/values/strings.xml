@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ProjectManagement</string>
+    <string name="fab_description">Floating Action Button</string>
+</resources>
