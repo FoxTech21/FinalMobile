@@ -27,10 +27,8 @@ public class TaskActivity extends AppCompatActivity {
 
 
     private EditText edittaskName, editEstimateDay, editProgressPercent;
-    private Spinner spinnerImage;
     private Button btnCreatTask;
     private DatabaseHandler databaseHandler;
-    private String selectedImageName;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +36,12 @@ public class TaskActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_task);
 
+        edittaskName = findViewById(R.id.edittaskName);
+        editEstimateDay = findViewById(R.id.editEstimateDay);
+        editProgressPercent = findViewById(R.id.editProgressPercent);
+
+        // Khởi tạo DatabaseHandler
+        databaseHandler = new DatabaseHandler(this);
 
         ImageView search = findViewById(R.id.imageSearch);
         search.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +49,32 @@ public class TaskActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TaskActivity.this, SearchPage.class);
                 startActivity(intent);
+            }
+        });
+
+        Button creatTask = findViewById(R.id.btnCreatTask);
+        creatTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String taskName = edittaskName.getText().toString();
+                String estimateDay = editEstimateDay.getText().toString();
+                String progressPercent = editProgressPercent.getText().toString();
+
+                // Kiểm tra nếu các trường không rỗng
+                if (!taskName.isEmpty() && !estimateDay.isEmpty() && !progressPercent.isEmpty()) {
+                    // Thêm dữ liệu vào database
+                    long newRowId = databaseHandler.insertTask(taskName, estimateDay, Integer.parseInt(progressPercent));
+
+                    // Kiểm tra nếu insert thành công
+                    if (newRowId != -1) {
+                        Toast.makeText(TaskActivity.this, "Task added with ID: " + newRowId, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(TaskActivity.this, "Error inserting task", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    // Hiển thị thông báo nếu trường nào đó còn trống
+                    Toast.makeText(TaskActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -81,46 +111,12 @@ public class TaskActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TaskActivity.this, TaskActivity.class);
                 startActivity(intent);
+
             }
         });
 
-        edittaskName = findViewById(R.id.edittaskName);
-        editEstimateDay = findViewById(R.id.editEstimateDay);
-        editProgressPercent = findViewById(R.id.editProgressPercent);
-        spinnerImage = findViewById(R.id.spinnerImage);
-
-        // Khởi tạo DatabaseHandler
-        databaseHandler = new DatabaseHandler(this);
 
 
-
-        // Xử lý sự kiện khi nhấn nút Save
-//        btnCreatTask.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Lấy dữ liệu từ các EditText
-//                String taskName = edittaskName.getText().toString();
-//                String estimateDay = editEstimateDay.getText().toString();
-//                String progressPercent = editProgressPercent.getText().toString();
-//
-//
-//                // Kiểm tra nếu các trường không rỗng
-//                if (!taskName.isEmpty() && !estimateDay.isEmpty()) {
-//                    // Thêm dữ liệu vào database
-//                    long newRowId = databaseHandler.insertDevTask(taskName, estimateDay, progressPercent, selectedImageName );
-//
-//                    // Kiểm tra nếu insert thành công
-//                    if (newRowId != -1) {
-//                        Toast.makeText(TaskActivity.this, "Task added with ID: " + newRowId, Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(TaskActivity.this, "Error inserting task", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    // Hiển thị thông báo nếu trường nào đó còn trống
-//                    Toast.makeText(TaskActivity.this, "Please fill all fields and select an image", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
 
     }
 }

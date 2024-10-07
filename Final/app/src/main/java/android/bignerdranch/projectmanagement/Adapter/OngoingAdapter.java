@@ -51,23 +51,6 @@ public class OngoingAdapter extends RecyclerView.Adapter<OngoingAdapter.ViewHold
         holder.startDate.setText(item.getStartDate());
         holder.progressBarPercent.setText(String.valueOf(item.getProgressPercent()) + "%");
 
-        int drawableResourceId = holder.itemView.getResources()
-                        .getIdentifier(items.get(position).getPicture(),"drawable",context.getPackageCodePath());
-
-        Glide.with(context)
-                        .load(drawableResourceId)
-                                .into(holder.pic);
-        // Lấy tên hình ảnh từ đối tượng task
-        String pictureName = item.getPicture(); // Giả sử getPicture() trả về tên hình ảnh
-
-        // Chuyển tên hình ảnh thành id tài nguyên và hiển thị hình ảnh
-        if (drawableResourceId != 0) {
-            holder.pic.setImageResource(drawableResourceId);
-        } else {
-            holder.pic.setImageResource(R.drawable.bottom_btn4); // Hình ảnh mặc định
-        }
-
-
         holder.progressBar.setProgress(item.getProgressPercent());
 
         if (position == 0) {
@@ -76,7 +59,6 @@ public class OngoingAdapter extends RecyclerView.Adapter<OngoingAdapter.ViewHold
             holder.startDate.setTextColor(context.getColor(R.color.white));
             holder.progressTxT.setTextColor(context.getColor(R.color.white));
             holder.progressBarPercent.setTextColor(context.getColor(R.color.white));
-            holder.pic.setColorFilter(ContextCompat.getColor(context, R.color.white), PorterDuff.Mode.SRC_IN);
             holder.progressBar.setProgressTintList(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.white)));
         } else {
             holder.layout.setBackgroundResource(R.drawable.light_background);
@@ -84,7 +66,6 @@ public class OngoingAdapter extends RecyclerView.Adapter<OngoingAdapter.ViewHold
             holder.startDate.setTextColor(context.getColor(R.color.drak_blue));
             holder.progressTxT.setTextColor(context.getColor(R.color.drak_blue));
             holder.progressBarPercent.setTextColor(context.getColor(R.color.drak_blue));
-            holder.pic.setColorFilter(ContextCompat.getColor(context, R.color.drak_blue), PorterDuff.Mode.SRC_IN);
             holder.progressBar.setProgressTintList(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.drak_blue)));
         }
     }
@@ -113,7 +94,6 @@ public class OngoingAdapter extends RecyclerView.Adapter<OngoingAdapter.ViewHold
             startDate = itemView.findViewById(R.id.datetxt);
             progressBarPercent = itemView.findViewById(R.id.percenttxt);
             progressBar = itemView.findViewById(R.id.progressBar);
-            pic = itemView.findViewById(R.id.pic);
         }
     }
 }

@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,9 +34,11 @@ public class MainPage extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
 
-        initRecyclerView();
-        databaseHandler = new DatabaseHandler(this);
 
+        databaseHandler = new DatabaseHandler(this);
+        taskList = databaseHandler.getTaskDetails();
+
+        initRecyclerView(taskList);
 
         ImageView search = findViewById(R.id.imageSearch);
         search.setOnClickListener(new View.OnClickListener() {
@@ -84,20 +85,20 @@ public class MainPage extends AppCompatActivity {
             }
         });
     }
-
-    private void initRecyclerView() {
-        // Lấy dữ liệu từ cơ sở dữ liệu
-        DatabaseHandler databaseHandler = new DatabaseHandler(this);
-        ArrayList<OngioingDomain> items = (ArrayList<OngioingDomain>) databaseHandler.getTaskDetails();
-
-        // Kiểm tra nếu danh sách không rỗng trước khi gán cho adapter
-        if (items != null && !items.isEmpty()) {
-            binding.viewOngoing.setLayoutManager(new GridLayoutManager(this, 2));
-            adapterOngoing = new OngoingAdapter(items);
-            binding.viewOngoing.setAdapter(adapterOngoing);
-        } else {
-            // Nếu không có dữ liệu, bạn có thể hiển thị thông báo hoặc một giao diện khác
-            Toast.makeText(this, "No tasks available", Toast.LENGTH_SHORT).show();
-        }
+    private void initRecyclerView(List<OngioingDomain> taskList) {
+        binding.viewOngoing.setLayoutManager(new GridLayoutManager(this, 2));
+        adapterOngoing = new OngoingAdapter((ArrayList<OngioingDomain>) taskList);
+        binding.viewOngoing.setAdapter(adapterOngoing);
     }
+
+//    private void initRecyclerView() {
+//        ArrayList<OngioingDomain> items = new ArrayList<>();
+//        items.add(new OngioingDomain("Order List","28/04/2024",50));
+//        items.add(new OngioingDomain("Order Detail","2/05/2024",80));
+//        items.add(new OngioingDomain("Product List","01/05/2024",63));
+//        items.add(new OngioingDomain("Product Detail","06/05/2024",72));
+//        binding.viewOngoing.setLayoutManager(new GridLayoutManager(this,2));
+//        adapterOngoing = new OngoingAdapter(items);
+//        binding.viewOngoing.setAdapter(adapterOngoing);
+//    }
 }

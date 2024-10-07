@@ -4,13 +4,11 @@ public class OngioingDomain {
     private String taskName;
     private String startDate;
     private int progressPercent;
-    private String picture;
 
-    public OngioingDomain(String taskName, String startDate, int progressPercent, String picture) {
+    public OngioingDomain(String taskName, String startDate, int progressPercent) {
         this.taskName = taskName;
         this.startDate = startDate;
         this.progressPercent = progressPercent;
-        this.picture = picture;
     }
 
     public String getTaskName() {
@@ -23,10 +21,6 @@ public class OngioingDomain {
 
     public int getProgressPercent() {
         return progressPercent;
-    }
-
-    public String getPicture() {
-        return picture;
     }
 }
 

@@ -63,10 +63,10 @@ public class Feature extends AppCompatActivity {
                 String startDay = editstartDay.getText().toString();
                 String startMonth = editstartMonth.getText().toString();
                 String startYear = editstartYear.getText().toString();
-                String endtDay = editendDay.getText().toString();
+                String endDay = editendDay.getText().toString();
                 String endMonth = editendMonth.getText().toString();
                 String endYear = editendYear.getText().toString();
-                String endDate = endtDay + "/" + endMonth + "/" + endYear;
+                String endDate = endDay + "/" + endMonth + "/" + endYear;
                 String startDate = startDay + "/" + startMonth + "/" + startYear;
 
                 // Kiểm tra nếu các trường không rỗng

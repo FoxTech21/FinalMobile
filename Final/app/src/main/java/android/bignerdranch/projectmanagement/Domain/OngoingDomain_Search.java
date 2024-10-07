@@ -2,35 +2,33 @@ package android.bignerdranch.projectmanagement.Domain;
 
 public class OngoingDomain_Search {
     private String endDate;
-    private String title;
-    private String date;
+    private String taskName;
+    private String startDate;
     private int progressPercent;
-    private String picture;
-    private String assignee;
+    private String devName;
 
-    public OngoingDomain_Search(String title, String date, int progressPercent, String picture, String endDate, String assignee) {
-        this.title = title;
-        this.date = date;
+    public OngoingDomain_Search(String taskName, String startDate, int progressPercent, String endDate, String devName) {
+        this.taskName = taskName;
+        this.startDate = startDate;
         this.progressPercent = progressPercent;
-        this.picture = picture;
         this.endDate = endDate;
-        this.assignee = assignee;
+        this.devName = devName;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
     }
 
-    public String getDate() {
-        return date;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
     public int getProgressPercent() {
@@ -41,13 +39,6 @@ public class OngoingDomain_Search {
         this.progressPercent = progressPercent;
     }
 
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
 
     public void setEndDate(String picture) {
         this.endDate = endDate;
@@ -57,11 +48,11 @@ public class OngoingDomain_Search {
         return endDate;
     }
 
-    public void setAssignee(String picture) {
-        this.assignee = assignee;
+    public void setDevName(String picture) {
+        this.devName = devName;
     }
 
-    public String getAssignee() {
-        return assignee;
+    public String getDevName() {
+        return devName;
     }
 }

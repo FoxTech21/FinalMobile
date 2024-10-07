@@ -75,13 +75,6 @@
                     android:textSize="12dp"/>
 
 
-                <Spinner
-                    android:id="@+id/spinnerImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
-
                 <Button
                     android:id="@+id/btnCreatTask"
                     android:layout_width="100dp"
