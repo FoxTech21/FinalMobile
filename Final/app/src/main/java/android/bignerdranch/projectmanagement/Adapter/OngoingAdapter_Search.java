@@ -22,9 +22,12 @@ import java.util.List;
 public class OngoingAdapter_Search extends RecyclerView.Adapter<OngoingAdapter_Search.viewholder> {
     private List<OngoingDomain_Search> items;
     private Context context;
+    private OnItemLongClickListener longClickListener;
 
-    public OngoingAdapter_Search(List<OngoingDomain_Search> items) {
+
+    public OngoingAdapter_Search(List<OngoingDomain_Search> items, OnItemLongClickListener longClickListener) {
         this.items = items;
+        this.longClickListener = longClickListener;
     }
 
     @NonNull
@@ -38,6 +41,8 @@ public class OngoingAdapter_Search extends RecyclerView.Adapter<OngoingAdapter_S
 
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
+
+        OngoingDomain_Search currentItem = items.get(position);
         holder.taskName.setText(items.get(position).getTaskName());
         holder.startDate.setText(items.get(position).getStartDate());
         holder.progressBarPercent.setText(items.get(position).getProgressPercent()+"%");
@@ -67,6 +72,19 @@ public class OngoingAdapter_Search extends RecyclerView.Adapter<OngoingAdapter_S
             holder.endDate.setTextColor(context.getColor(R.color.drak_blue));
             holder.progressBar.setProgressTintList(ColorStateList.valueOf(ContextCompat.getColor(context,R.color.drak_blue)));
         }
+
+        holder.itemView.setOnLongClickListener(v -> {
+            if (longClickListener != null) {
+                longClickListener.onItemLongClick(currentItem, position);
+            }
+            return true;
+        });
+
+    }
+
+    // Phương thức này để lấy danh sách các item trong adapter
+    public List<OngoingDomain_Search> getItems() {
+        return items;
     }
 
     @Override
@@ -75,12 +93,13 @@ public class OngoingAdapter_Search extends RecyclerView.Adapter<OngoingAdapter_S
     }
 
     public class viewholder extends RecyclerView.ViewHolder{
-        TextView taskName,startDate,progressBarPercent,progressTxT,endDate,devName;
+        TextView taskName,startDate,progressBarPercent,progressTxT,endDate,devName, texttaskId;
         ProgressBar progressBar;
         ConstraintLayout layout;
         public viewholder(@NonNull View itemView) {
             super(itemView);
             layout = itemView.findViewById(R.id.layout);
+            texttaskId = itemView.findViewById((R.id.texttaskId));
             progressTxT = itemView.findViewById(R.id.progresstxt);
             taskName = itemView.findViewById(R.id.titletxt);
             startDate = itemView.findViewById(R.id.datetxt);
@@ -89,5 +108,8 @@ public class OngoingAdapter_Search extends RecyclerView.Adapter<OngoingAdapter_S
             endDate = itemView.findViewById(R.id.textEndDate);
             devName = itemView.findViewById(R.id.textDevName);
         }
+    }
+    public interface OnItemLongClickListener {
+        void onItemLongClick(OngoingDomain_Search item, int position);
     }
 }

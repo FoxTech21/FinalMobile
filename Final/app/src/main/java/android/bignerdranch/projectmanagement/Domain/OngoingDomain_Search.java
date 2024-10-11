@@ -1,13 +1,16 @@
 package android.bignerdranch.projectmanagement.Domain;
 
 public class OngoingDomain_Search {
+    private int taskId;  // Thêm thuộc tính taskId
     private String endDate;
     private String taskName;
     private String startDate;
     private int progressPercent;
     private String devName;
 
-    public OngoingDomain_Search(String taskName, String startDate, int progressPercent, String endDate, String devName) {
+    // Constructor bao gồm taskId
+    public OngoingDomain_Search(int taskId, String taskName, String startDate, int progressPercent, String endDate, String devName) {
+        this.taskId = taskId;
         this.taskName = taskName;
         this.startDate = startDate;
         this.progressPercent = progressPercent;
@@ -15,6 +18,16 @@ public class OngoingDomain_Search {
         this.devName = devName;
     }
 
+    // Getter và setter cho taskId
+    public int getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
+    }
+
+    // Getter và setter cho các thuộc tính còn lại
     public String getTaskName() {
         return taskName;
     }
@@ -39,8 +52,7 @@ public class OngoingDomain_Search {
         this.progressPercent = progressPercent;
     }
 
-
-    public void setEndDate(String picture) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -48,7 +60,7 @@ public class OngoingDomain_Search {
         return endDate;
     }
 
-    public void setDevName(String picture) {
+    public void setDevName(String devName) {
         this.devName = devName;
     }
 

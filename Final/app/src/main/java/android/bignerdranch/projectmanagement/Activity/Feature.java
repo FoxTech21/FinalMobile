@@ -115,5 +115,23 @@ public class Feature extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ImageView creat = findViewById(R.id.imageAdd);
+        creat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Feature.this, Feature.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView task = findViewById(R.id.imageTasks);
+        task.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Feature.this, TaskActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -21,12 +21,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class TaskActivity extends AppCompatActivity {
 
 
-    private EditText edittaskName, editEstimateDay, editProgressPercent;
+    private EditText edittaskName, editEstimateDay, editProgressPercent, edittaskId;
     private Button btnCreatTask;
     private DatabaseHandler databaseHandler;
     @SuppressLint("MissingInflatedId")
@@ -36,6 +37,8 @@ public class TaskActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_task);
 
+
+        edittaskId = findViewById(R.id.edittaskId);
         edittaskName = findViewById(R.id.edittaskName);
         editEstimateDay = findViewById(R.id.editEstimateDay);
         editProgressPercent = findViewById(R.id.editProgressPercent);
@@ -56,6 +59,7 @@ public class TaskActivity extends AppCompatActivity {
         creatTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String taskId = edittaskId.getText().toString();
                 String taskName = edittaskName.getText().toString();
                 String estimateDay = editEstimateDay.getText().toString();
                 String progressPercent = editProgressPercent.getText().toString();
@@ -63,7 +67,7 @@ public class TaskActivity extends AppCompatActivity {
                 // Kiểm tra nếu các trường không rỗng
                 if (!taskName.isEmpty() && !estimateDay.isEmpty() && !progressPercent.isEmpty()) {
                     // Thêm dữ liệu vào database
-                    long newRowId = databaseHandler.insertTask(taskName, estimateDay, Integer.parseInt(progressPercent));
+                    long newRowId = databaseHandler.insertTask(Integer.parseInt(taskId), taskName, estimateDay, Integer.parseInt(progressPercent));
 
                     // Kiểm tra nếu insert thành công
                     if (newRowId != -1) {

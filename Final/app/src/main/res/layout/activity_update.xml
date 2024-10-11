@@ -35,10 +35,10 @@
             <LinearLayout
                 android:layout_width="347dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginStart="30dp"
+                android:padding="18dp"
                 android:layout_weight="1"
+                android:background="@drawable/light_background"
                 android:orientation="vertical"
                 android:layout_marginTop="42dp">
 
@@ -59,6 +59,26 @@
                     android:ems="10"
                     android:inputType="text"
                     android:hint="Task ID"
+                    android:layout_marginBottom="18dp"
+                    android:textColorHint="@color/drak_blue"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/edittaskName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="Task Name"
+                    android:layout_marginBottom="18dp"
+                    android:textColorHint="@color/drak_blue"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/editProgressPercent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="Progress Percent"
                     android:layout_marginBottom="18dp"
                     android:textColorHint="@color/drak_blue"
                     android:textSize="12dp"/>
@@ -162,11 +182,12 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/btnUpdate"
                     android:layout_width="100dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="18dp"
+                    android:layout_marginStart="200dp"
                     android:background="@drawable/light_background"
                     android:backgroundTintMode="add"
                     android:text="Update"

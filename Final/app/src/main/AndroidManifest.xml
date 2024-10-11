@@ -16,16 +16,10 @@
             android:name=".Activity.TaskActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.OngoingActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activity.Update"
             android:exported="false" />
         <activity
             android:name=".Activity.Feature"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.FeatureE_D"
             android:exported="false" />
         <activity
             android:name=".Activity.SettingPage"

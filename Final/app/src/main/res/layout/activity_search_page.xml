@@ -103,34 +103,7 @@
                 android:paddingLeft="3dp"/>
         </LinearLayout>
     </ScrollView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="10dp">
 
-        <Button
-            android:id="@+id/btnUpdate"
-            android:layout_width="40dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:text="Update"
-            android:textSize="12sp"
-            android:backgroundTint="@color/drak_blue"
-            android:layout_marginEnd="70dp"
-            android:layout_marginBottom="16dp"/>
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="40dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/drak_blue"
-            android:text="Remove"
-            android:textSize="12sp" />
-    </LinearLayout>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="110dp"
@@ -155,6 +128,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/home"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -164,11 +138,11 @@
                     <ImageView
                         android:id="@+id/imageHome"
                         android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         app:srcCompat="@drawable/bottom_btn1"
-                        tools:srcCompat="@drawable/bottom_btn1"
-                        tools:ignore="DuplicateIds" />
+                        tools:ignore="DuplicateIds"
+                        tools:srcCompat="@drawable/bottom_btn1" />
 
                     <TextView
                         android:id="@+id/homeText"
@@ -290,6 +264,7 @@
         </com.google.android.material.bottomappbar.BottomAppBar>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
+            android:id="@+id/imageAdd"
             android:layout_height="wrap_content"
             android:src="@drawable/float_icon"
             app:backgroundTint="@color/drak_blue"

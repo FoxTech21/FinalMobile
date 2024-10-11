@@ -28,11 +28,10 @@ public class DatabaseHandler extends SQLiteOpenHelper{
     private static final String KEY_END_DATE = "ENDtDate";
 
 //Table: Task
-    private static final String KEY_ID_TASK = "id";
+    private static final String KEY_ID_TASK = "taskID";
     private static final String KEY_TASK_NAME = "taskName";
     private static final String KEY_ESTIMATE_DAY = "estimateDay";
     private static final String KEY_PROGRESS_PERCENT = "progressPercent";
-    private static final String KEY_PICTURE = "picture";
 
 
     @Override
@@ -40,7 +39,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         String create_devTask_table = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s TEXT)",
                 TABLE_NAME, KEY_ID_DEV_TASK, KEY_DEV_NAME, KEY_TASK_ID, KEY_START_DATE, KEY_END_DATE);
         db.execSQL(create_devTask_table);
-        String create_task_table = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s TEXT)",
+        String create_task_table = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT, %s TEXT)",
                 TABLE1_NAME, KEY_ID_TASK, KEY_TASK_NAME, KEY_ESTIMATE_DAY, KEY_PROGRESS_PERCENT);
         db.execSQL(create_task_table);
     }
@@ -82,10 +81,11 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 
 
     //input -> Task:
-    public long insertTask(String taskName, String estimateDay, int progressPercent) {
+    public long insertTask(int taskId, String taskName, String estimateDay, int progressPercent) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(KEY_TASK_ID, taskId);
         values.put(KEY_TASK_NAME, taskName);
         values.put(KEY_ESTIMATE_DAY, estimateDay);
         values.put(KEY_PROGRESS_PERCENT,progressPercent);
@@ -105,7 +105,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         String selectQuery = "SELECT " + TABLE1_NAME + ".taskName, " + TABLE_NAME + ".startDate, " +
                 TABLE1_NAME + ".progressPercent " +
                 "FROM " + TABLE_NAME + " INNER JOIN " + TABLE1_NAME +
-                " ON " + TABLE_NAME + ".taskId = " + TABLE1_NAME + ".id";
+                " ON " + TABLE_NAME + ".taskId = " + TABLE1_NAME + ".taskID";
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
@@ -131,21 +131,23 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         String selectQuery = "SELECT " + TABLE1_NAME + ".taskName, "
                 + TABLE_NAME + ".startDate, "
                 + TABLE_NAME + ".ENDtDate, "
-                + TABLE_NAME + ".devName, " +
-                TABLE1_NAME + ".progressPercent " +
+                + TABLE_NAME + ".devName, "
+                + TABLE1_NAME + ".progressPercent, "
+                + TABLE1_NAME + ".taskID " +
                 "FROM " + TABLE_NAME + " INNER JOIN " + TABLE1_NAME +
-                " ON " + TABLE_NAME + ".taskId = " + TABLE1_NAME + ".id";
+                " ON " + TABLE_NAME + ".taskId = " + TABLE1_NAME + ".taskID";
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
             do {
+                int taskId = Integer.parseInt(cursor.getString(cursor.getColumnIndex("taskID")));
                 String taskName = cursor.getString(cursor.getColumnIndex("taskName"));
                 String startDate = cursor.getString(cursor.getColumnIndex("startDate"));
-                String endDate = cursor.getString(cursor.getColumnIndex("endDate"));
+                String endDate = cursor.getString(cursor.getColumnIndex("ENDtDate"));
                 String devName = cursor.getString(cursor.getColumnIndex("devName"));
                 int progressPercent = cursor.getInt(cursor.getColumnIndex("progressPercent"));
 
-                OngoingDomain_Search task = new OngoingDomain_Search(taskName, startDate, progressPercent, endDate, devName);
+                OngoingDomain_Search task = new OngoingDomain_Search(taskId, taskName, startDate, progressPercent, endDate, devName);
                 taskListSearch.add(task);
             } while (cursor.moveToNext());
         }
@@ -154,4 +156,41 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         db.close();
         return taskListSearch;
     }
+
+
+    public void deleteTaskByName(String taskName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE1_NAME, "taskName = ?", new String[]{taskName});
+        db.close();
+    }
+
+    // Hàm cập nhật task trong cơ sở dữ liệu
+    public int updateTask(int taskId, String devName, String startDate, String endDate, String taskName, int progressPercent) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Cập nhật bảng task
+        ContentValues taskValues = new ContentValues();
+        taskValues.put(KEY_TASK_NAME, taskName);
+        taskValues.put(KEY_PROGRESS_PERCENT, progressPercent);
+
+        // Cập nhật bảng dev_task
+        ContentValues devTaskValues = new ContentValues();
+        devTaskValues.put(KEY_DEV_NAME, devName);
+        devTaskValues.put(KEY_START_DATE, startDate);
+        devTaskValues.put(KEY_END_DATE, endDate);
+
+        // Cập nhật bảng task theo taskId
+        int taskUpdate = db.update(TABLE1_NAME, taskValues, KEY_ID_TASK + " = ?", new String[]{String.valueOf(taskId)});
+
+        // Cập nhật bảng dev_task theo taskId
+        int devTaskUpdate = db.update(TABLE_NAME, devTaskValues, KEY_TASK_ID + " = ?", new String[]{String.valueOf(taskId)});
+
+        // Đóng database
+        db.close();
+
+        // Trả về tổng số dòng đã được cập nhật
+        return taskUpdate + devTaskUpdate;
+    }
+
+
 }

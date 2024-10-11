@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +41,7 @@ public class MainPage extends AppCompatActivity {
 
         initRecyclerView(taskList);
 
-        ImageView search = findViewById(R.id.imageSearch);
+        LinearLayout search = findViewById(R.id.search);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +50,7 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
-        ImageView home = findViewById(R.id.imageHome);
+        LinearLayout home = findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +59,7 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
-        ImageView setting = findViewById(R.id.imageSetting);
+        LinearLayout setting = findViewById(R.id.setting);
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +77,7 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
-        ImageView task = findViewById(R.id.imageTasks);
+        LinearLayout task = findViewById(R.id.task);
         task.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
