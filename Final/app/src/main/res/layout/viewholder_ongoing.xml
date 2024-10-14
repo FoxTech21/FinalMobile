@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="167dp"
+    android:layout_margin="8dp"
+    android:background="@drawable/light_background">
+
+    <TextView
+        android:id="@+id/taskID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="1"
+        android:textColor="@color/drak_blue"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/TaskID_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintStart_toEndOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/TaskID_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task ID:"
+        android:textColor="@color/drak_blue"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/datetxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.805"
+        app:layout_constraintStart_toEndOf="@+id/datetxt" />
+
+    <TextView
+        android:id="@+id/devNametxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dev Name"
+        android:textColor="@color/drak_blue"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/titletxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.318"
+        app:layout_constraintStart_toEndOf="@+id/titletxt"
+        app:layout_constraintTop_toTopOf="@+id/titletxt"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/datetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="July 21, 2024"
+        android:textColor="@color/drak_blue"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/endDatetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:text="July 27, 2024"
+        android:textColor="@color/drak_blue"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/datetxt"
+        app:layout_constraintEnd_toStartOf="@+id/TaskID_text"
+        app:layout_constraintStart_toEndOf="@+id/datetxt" />
+
+    <ImageView
+        android:id="@+id/pic"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/datetxt"
+        app:layout_constraintTop_toBottomOf="@+id/datetxt"
+        app:srcCompat="@drawable/ongoing1" />
+
+    <TextView
+        android:id="@+id/titletxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Order List"
+        android:textColor="@color/drak_blue"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/pic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/pic"
+        app:layout_constraintTop_toTopOf="@+id/pic" />
+
+    <TextView
+        android:id="@+id/progresstxt"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Progress"
+        android:textColor="@color/drak_blue"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/pic"
+        app:layout_constraintTop_toBottomOf="@+id/pic" />
+
+    <TextView
+        android:id="@+id/textestimate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estimate Date:"
+        android:textColor="@color/drak_blue"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/progresstxt"
+        app:layout_constraintTop_toTopOf="@+id/progresstxt" />
+
+    <TextView
+        android:id="@+id/estimatetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
+        android:text="0"
+        android:textColor="@color/drak_blue"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textestimate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textestimate"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:max="100"
+        android:progress="40"
+        android:progressTint="@color/drak_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progresstxt" />
+
+    <TextView
+        android:id="@+id/percenttxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="40%"
+        android:textColor="@color/drak_blue"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.Feature">
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Featute"
+                android:textColor="@color/drak_blue"
+                android:textSize="32dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="347dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="40dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/light_background"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginTop="32dp">
+
+                <EditText
+                    android:id="@+id/editDevId"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:inputType="text"
+                    android:hint="Dev ID"
+                    android:layout_marginBottom="18dp"
+                    android:textColorHint="@color/drak_blue"
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:id="@+id/editdevName"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:inputType="text"
+                    android:hint="Dev Name"
+                    android:layout_marginBottom="18dp"
+                    android:textColorHint="@color/drak_blue"
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:id="@+id/edittaskID"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="Task ID"
+                    android:layout_marginBottom="18dp"
+                    android:textColorHint="@color/drak_blue"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Start Date"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/drak_blue"
+                    android:textSize="18dp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/editstartDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:hint="Day"
+                        android:textColorHint="@color/drak_blue"
+                        android:textSize="12sp"/>
+
+                    <EditText
+                        android:id="@+id/editstartMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:hint="Month"
+                        android:textColorHint="@color/drak_blue"
+                        android:textSize="12sp"/>
+
+                    <EditText
+                        android:id="@+id/editstartYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:hint="Year"
+                        android:textColorHint="@color/drak_blue"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView123"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="End Date"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/drak_blue"
+                    android:textSize="18dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/editendDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:hint="Day"
+                        android:textColorHint="@color/drak_blue"
+                        android:textSize="12sp"/>
+
+                    <EditText
+                        android:id="@+id/editendMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:hint="Month"
+                        android:textColorHint="@color/drak_blue"
+                        android:textSize="12sp"/>
+
+                    <EditText
+                        android:id="@+id/editendYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:hint="Year"
+                        android:textColorHint="@color/drak_blue"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnCreat"
+                    android:layout_width="100dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="18dp"
+                    android:background="@drawable/light_background"
+                    android:backgroundTintMode="add"
+                    android:text="Creat"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:layout_width="match_parent"
+            android:id="@+id/app_bar"
+            app:fabCradleMargin="8dp"
+            app:fabCradleRoundedCornerRadius="50dp"
+            app:fabCradleVerticalOffset="6dp"
+            android:layout_gravity="bottom"
+            android:layout_height="65dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageHome"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/bottom_btn1"
+                        tools:srcCompat="@drawable/bottom_btn1"
+                        tools:ignore="DuplicateIds" />
+
+                    <TextView
+                        android:id="@+id/homeText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Home"
+                        android:textAlignment="center"
+                        android:textColor="@color/drak_blue"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageSearch"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/search"
+                        tools:srcCompat="@drawable/search"
+                        tools:ignore="DuplicateIds" />
+
+                    <TextView
+                        android:id="@+id/searchText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Search"
+                        android:textAlignment="center"
+                        android:textColor="@color/drak_blue"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/bottom_btn1"
+                        tools:srcCompat="@drawable/bottom_btn1" />
+
+                    <TextView
+                        android:id="@+id/text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Home"
+                        android:textAlignment="center"
+                        android:textColor="@color/drak_blue"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageTasks"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/bottom_btn2"
+                        tools:srcCompat="@drawable/bottom_btn2" />
+
+                    <TextView
+                        android:id="@+id/paymentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Tasks"
+                        android:textAlignment="center"
+                        android:textColor="@color/drak_blue"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageSetting"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/bottom_btn4"
+                        tools:srcCompat="@drawable/bottom_btn4" />
+
+                    <TextView
+                        android:id="@+id/settingText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Setting"
+                        android:textAlignment="center"
+                        android:textColor="@color/drak_blue"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.bottomappbar.BottomAppBar>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageAdd"
+            android:src="@drawable/float_icon"
+            app:backgroundTint="@color/drak_blue"
+            app:maxImageSize="20dp"
+            app:layout_anchor="@id/app_bar"
+            app:tint="@color/white"
+            android:contentDescription="@string/fab_description">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
