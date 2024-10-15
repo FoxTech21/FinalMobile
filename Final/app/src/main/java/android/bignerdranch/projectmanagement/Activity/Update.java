@@ -66,7 +66,7 @@ public class Update extends AppCompatActivity {
         });
 
         // Nhận dữ liệu từ Intent
-        String taskID = getIntent().getStringExtra("taskID");
+        String taskId = getIntent().getStringExtra("taskId");
         String taskName = getIntent().getStringExtra("taskName");
         String startDate = getIntent().getStringExtra("startDate");
         String endDate = getIntent().getStringExtra("endDate");
@@ -86,7 +86,7 @@ public class Update extends AppCompatActivity {
         String endYear = endDateParts[2];  // "2024"
 
         // Hiển thị thông tin cũ
-        bindingUpdate.edittaskID.setText(taskID);
+        bindingUpdate.edittaskID.setText(taskId);
         bindingUpdate.editdevName.setText(devName);
         bindingUpdate.edittaskName.setText(taskName);
 

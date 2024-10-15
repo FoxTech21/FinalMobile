@@ -94,7 +94,7 @@
                         android:id="@+id/textView16"
                         android:textColor="@color/drak_blue"
                         android:textStyle="bold"
-                        android:layout_width="0dp"
+                        android:layout_width="25dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:text="Task ID:"/>
@@ -116,7 +116,7 @@
 
                     <TextView
                         android:id="@+id/textView18"
-                        android:layout_width="0dp"
+                        android:layout_width="25dp"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
                         android:text="Dev Name:"
@@ -140,7 +140,7 @@
 
                     <TextView
                         android:id="@+id/textView20"
-                        android:layout_width="0dp"
+                        android:layout_width="25dp"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
                         android:text="Task Name:"
@@ -164,56 +164,8 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
-                        android:id="@+id/textView22"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:text="Start Date:"
-                        android:textColor="@color/drak_blue"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:id="@+id/txtStartDate"
-                        android:textColor="@color/drak_blue"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="6"
-                        android:text="TextView" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:id="@+id/textView24"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:text="End Date:"
-                        android:textColor="@color/drak_blue"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:id="@+id/txtEndDate"
-                        android:textColor="@color/drak_blue"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="6"
-                        android:text="TextView" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
                         android:id="@+id/textView26"
-                        android:layout_width="0dp"
+                        android:layout_width="39dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:text="Progress Percent:"
@@ -254,7 +206,7 @@
 
                     <TextView
                         android:id="@+id/textView28"
-                        android:layout_width="0dp"
+                        android:layout_width="25dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:text="Estimate Day:"
@@ -268,6 +220,67 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="6"
                         android:text="TextView" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <!-- Layout cho Start Date -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="left">
+
+                        <TextView
+                            android:id="@+id/textViewStartDateLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Start Date:"
+                            android:textColor="@color/drak_blue"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/txtStartDate"
+                            android:textColor="@color/drak_blue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:layout_marginTop="10dp"
+                            android:text="asdas"
+                            android:gravity="left"/>
+                    </LinearLayout>
+
+                    <!-- Layout cho End Date -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="left">
+
+                        <TextView
+                            android:id="@+id/textViewEndDateLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="End Date:"
+                            android:textColor="@color/drak_blue"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/txtEndDate"
+                            android:textColor="@color/drak_blue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:layout_marginTop="10dp"
+                            android:text="asda"
+                            android:gravity="left"/>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

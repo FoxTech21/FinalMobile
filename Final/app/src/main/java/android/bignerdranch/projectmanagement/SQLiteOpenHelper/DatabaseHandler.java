@@ -69,10 +69,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     // Input -> Task
-    public long insertTask(int taskId, String taskName, int estimateDay, int progressPercent) {
+    public long insertTask(int taskID, String taskName, int estimateDay, int progressPercent) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_TASK_ID, taskId);
+        values.put(KEY_TASK_ID, taskID);
         values.put(KEY_TASK_NAME, taskName);
         values.put(KEY_ESTIMATE_DAY, estimateDay);
         values.put(KEY_PROGRESS_PERCENT, progressPercent);
@@ -89,7 +89,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT " + TABLE1_NAME + ".taskName, "
                 + TABLE_NAME + ".startDate, "
-                + TABLE1_NAME + ".progressPercent, "
                 + TABLE1_NAME + ".taskID, "
                 + TABLE_NAME + ".devName, "
                 + TABLE_NAME + ".ENDtDate, "
