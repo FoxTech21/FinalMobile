@@ -13,6 +13,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.bignerdranch.projectmanagement.R;
+import android.widget.Toast;
 
 public class TaskDetail extends AppCompatActivity {
     private TextView txtTaskId,devNameTxt, taskNameTxt, startDateTxt, endDateTxt, estimateDayTxt, progressBarPercent;
@@ -42,7 +43,26 @@ public class TaskDetail extends AppCompatActivity {
         String startDate = intent.getStringExtra("startDate");
         String endDate = intent.getStringExtra("endDate");
         int progressPercent = intent.getIntExtra("progressPercent", 0); // Giá trị mặc định là 0
-        int estimateDay = intent.getIntExtra("estimateDay", 0);
+        long estimateDay = intent.getLongExtra("estimateDay", 0); // Lấy estimateDay
+
+        if(estimateDay == 0)
+        {
+            // Tách startDate thành các thành phần riêng biệt (day, month, year)
+            String[] startDateParts = startDate.split("/"); // Tách chuỗi theo dấu "/"
+            int startDay = Integer.parseInt(startDateParts[0]);  // "25"
+            String startMonth = startDateParts[1];  // "09"
+            String startYear = startDateParts[2];  // "2024"
+
+            // Tách endDate thành các thành phần riêng biệt (day, month, year)
+            String[] endDateParts = endDate.split("/");  // Tách chuỗi theo dấu "/"
+            int endDay = Integer.parseInt(endDateParts[0]);  // "30"
+            String endMonth = endDateParts[1];  // "10"
+            String endYear = endDateParts[2];
+
+            estimateDay = (endDay - startDay) + 1; // Tính toán estimateDay
+        }else {
+            Toast.makeText(this, "estimateDay: " + estimateDay, Toast.LENGTH_SHORT).show();
+        }
 
         // Thiết lập dữ liệu vào các TextView
         txtTaskId.setText(String.valueOf(taskID));
@@ -51,7 +71,7 @@ public class TaskDetail extends AppCompatActivity {
         startDateTxt.setText(startDate);
         endDateTxt.setText(endDate);
         progressBarPercent.setText(progressPercent + "%");
-        estimateDayTxt.setText(estimateDay + " days");
+        estimateDayTxt.setText(String.valueOf(estimateDay)); // Hiển thị estimateDay
 
         // Đặt giá trị phần trăm cho ProgressBar
         progressBar.setProgress(progressPercent); // Hiển thị phần trăm tiến độ
@@ -86,8 +106,8 @@ public class TaskDetail extends AppCompatActivity {
             startActivity(settingIntent);
         });
 
-        ImageView creat = findViewById(R.id.imageAdd);
-        creat.setOnClickListener(v -> {
+        ImageView create = findViewById(R.id.imageAdd);
+        create.setOnClickListener(v -> {
             Intent featureIntent = new Intent(TaskDetail.this, Feature.class);
             startActivity(featureIntent);
         });

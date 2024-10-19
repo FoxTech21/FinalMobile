@@ -26,7 +26,7 @@
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Featute"
+                android:text="Feature"
                 android:textColor="@color/drak_blue"
                 android:textSize="32dp"
                 android:textStyle="bold"
@@ -182,7 +182,7 @@
                     android:layout_marginBottom="18dp"
                     android:background="@drawable/light_background"
                     android:backgroundTintMode="add"
-                    android:text="Creat"
+                    android:text="Create"
                     android:textColor="@color/white"
                     android:textSize="10sp" />
 

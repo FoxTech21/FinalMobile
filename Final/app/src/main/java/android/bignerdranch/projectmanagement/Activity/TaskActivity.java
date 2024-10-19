@@ -26,10 +26,10 @@ import android.widget.Toast;
 
 public class TaskActivity extends AppCompatActivity {
 
-
-    private EditText edittaskName, editEstimateDay, editProgressPercent, edittaskId;
+    private EditText edittaskName, editProgressPercent, edittaskId;
     private Button btnCreatTask;
     private DatabaseHandler databaseHandler;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,37 +37,26 @@ public class TaskActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_task);
 
-
         edittaskId = findViewById(R.id.edittaskId);
         edittaskName = findViewById(R.id.edittaskName);
-        editEstimateDay = findViewById(R.id.editEstimateDay);
         editProgressPercent = findViewById(R.id.editProgressPercent);
 
         // Khởi tạo DatabaseHandler
         databaseHandler = new DatabaseHandler(this);
 
-        ImageView search = findViewById(R.id.imageSearch);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TaskActivity.this, SearchPage.class);
-                startActivity(intent);
-            }
-        });
-
+        // Xử lý khi bấm nút tạo task
         Button creatTask = findViewById(R.id.btnCreatTask);
         creatTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String taskId = edittaskId.getText().toString();
                 String taskName = edittaskName.getText().toString();
-                String estimateDay = editEstimateDay.getText().toString();
                 String progressPercent = editProgressPercent.getText().toString();
 
                 // Kiểm tra nếu các trường không rỗng
-                if (!taskName.isEmpty() && !estimateDay.isEmpty() && !progressPercent.isEmpty()) {
-                    // Thêm dữ liệu vào database
-                    long newRowId = databaseHandler.insertTask(Integer.parseInt(taskId), taskName, Integer.parseInt(estimateDay), Integer.parseInt(progressPercent));
+                if (!taskId.isEmpty() && !taskName.isEmpty() && !progressPercent.isEmpty()) {
+                    // Thêm dữ liệu vào database (estimateDay mặc định là 0)
+                    long newRowId = databaseHandler.insertTask(Integer.parseInt(taskId), taskName, 0, Integer.parseInt(progressPercent));
 
                     // Kiểm tra nếu insert thành công
                     if (newRowId != -1) {
@@ -76,16 +65,17 @@ public class TaskActivity extends AppCompatActivity {
                         Toast.makeText(TaskActivity.this, "Error inserting task", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    // Hiển thị thông báo nếu trường nào đó còn trống
                     Toast.makeText(TaskActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
+
         ImageView home = findViewById(R.id.imageHome);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("TaskActivity", "Home button clicked");
                 Intent intent = new Intent(TaskActivity.this, MainPage.class);
                 startActivity(intent);
             }

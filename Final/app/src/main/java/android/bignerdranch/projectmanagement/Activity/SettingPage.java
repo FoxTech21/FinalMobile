@@ -31,7 +31,7 @@ public class SettingPage extends AppCompatActivity {
         });
 
         ImageView home = findViewById(R.id.imageHome);
-                home.setOnClickListener(v -> {
+        home.setOnClickListener(v -> {
             Intent intent = new Intent(SettingPage.this, MainPage.class);
             startActivity(intent);
         });

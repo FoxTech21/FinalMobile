@@ -8,9 +8,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 
 public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "ProjectManager";
@@ -68,7 +75,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return id;
     }
 
-    // Input -> Task
+
+
+    // Input -> Task (thêm estimateDay mặc định là 0)
     public long insertTask(int taskID, String taskName, int estimateDay, int progressPercent) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -203,13 +212,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     // Hàm cập nhật task trong cơ sở dữ liệu
-    public int updateTask(int taskId, String devName, String startDate, String endDate, String taskName, int progressPercent) {
+    public int updateTask(int taskId, String devName, String startDate, String endDate, String taskName, int progressPercent, int estimate) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         // Cập nhật bảng task
         ContentValues taskValues = new ContentValues();
         taskValues.put(KEY_TASK_NAME, taskName);
         taskValues.put(KEY_PROGRESS_PERCENT, progressPercent);
+        taskValues.put(KEY_ESTIMATE_DAY, estimate);
 
         // Cập nhật bảng dev_task
         ContentValues devTaskValues = new ContentValues();

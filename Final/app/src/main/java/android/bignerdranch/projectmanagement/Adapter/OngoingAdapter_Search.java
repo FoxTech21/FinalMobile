@@ -55,7 +55,6 @@ public class OngoingAdapter_Search extends RecyclerView.Adapter<OngoingAdapter_S
         holder.progressBarPercent.setText(items.get(position).getProgressPercent()+"%");
         holder.endDate.setText(items.get(position).getEndDate());
         holder.devName.setText(items.get(position).getDevName());
-
         holder.progressBar.setProgress(items.get(position).getProgressPercent());
 
         if(position == 0)

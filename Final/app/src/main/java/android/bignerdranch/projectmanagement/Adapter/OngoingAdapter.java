@@ -23,6 +23,7 @@ import android.bignerdranch.projectmanagement.SQLiteOpenHelper.DatabaseHandler;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
